@@ -1,24 +1,19 @@
----
-output: rmarkdown::github_document
----
 
-Mock up a posterior predictive from two artificial Gaussian distributions.
+Mock up a posterior predictive from two artificial Gaussian
+distributions.
 
 # Packages
 
-```{r pac, warning = FALSE, message = FALSE}
-
+``` r
 library(tidyverse)
 library(ggpubr)
-
 ```
 
 # Data
 
 Generate some data, then find a posterior.
 
-```{r dat}
-
+``` r
 n = 1e+5 # Set a count of observations.
 u0 = 0 # Set a mean for the prior probability distribution.
 s0 = 10 # Set a standard deviation for "".
@@ -38,15 +33,13 @@ dat =
   pivot_longer(cols = everything(),
                names_to = "Distribution",
                values_to = "Cheshire Cats Observed")
-
 ```
 
 # Visualization
 
 Get a neat illustration.
 
-```{r vis}
-
+``` r
 dat %>% 
   ggplot() +
   geom_density(aes(x = `Cheshire Cats Observed`,
@@ -55,6 +48,6 @@ dat %>%
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   theme_pubr()
-
 ```
 
+![](reprex_bayes_gauss_files/figure-gfm/vis-1.png)<!-- -->
